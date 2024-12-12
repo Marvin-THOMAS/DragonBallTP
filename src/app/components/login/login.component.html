@@ -1,0 +1,27 @@
+<br><br>
+<h1 class="center">Bienvenue</h1><br><br>
+<p class="center">Veuillez vous connecter pour acceder au site</p>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+  <label for="username">Identifiant</label><input id="username" name="username" type="text" formControlName="login">
+  <div class="error" *ngIf="loginForm.get('login')?.hasError('required')">
+    Ce champ est obligatoire !
+  </div>
+  <div class="error" *ngIf="loginForm.get('login')?.hasError('minLength')">
+    Le login doit faire au moin 4 carractères
+  </div>
+  <br>
+
+
+  <label for="password">Mot de passe</label><input id="password" name="password" type="password" formControlName="password">
+  <div class="error" *ngIf="loginForm.get('password')?.hasError('required')">
+    Ce champ est obligatoire !
+  </div>
+  <br>
+
+
+  <button>Se connecter</button>
+
+</form>
