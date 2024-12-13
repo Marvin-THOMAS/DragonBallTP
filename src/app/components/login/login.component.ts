@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {JsonPipe, NgIf} from "@angular/common";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,8 @@ import {NgIf} from "@angular/common";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    JsonPipe
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -17,23 +19,28 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor() {
 
-  }
+  constructor(private user : UserService) { }
+
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      login: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      password: new FormControl(null, [Validators.required,Validators.minLength(4)]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(4)]),
     })
   }
 
 
   onSubmit() {
-    console.log(this.loginForm.value);
-
+    if (this.loginForm.valid) {
+      this.user.login(this.loginForm.value.username)
+    }
   }
+
+
+
 }
+
 
 
 

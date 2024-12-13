@@ -5,23 +5,28 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
 
-  <label for="username">Identifiant</label><input id="username" name="username" type="text" formControlName="login">
-  <div class="error" *ngIf="loginForm.get('login')?.hasError('required')">
+  <label for="username">Identifiant</label>
+  <input id="username" name="username" type="text" formControlName="username">
+  <div class="red" *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
     Ce champ est obligatoire !
   </div>
-  <div class="error" *ngIf="loginForm.get('login')?.hasError('minLength')">
+  <div class="red" *ngIf="loginForm.get('username')?.hasError('minlength' ) && loginForm.get('username')?.touched">
     Le login doit faire au moin 4 carractères
   </div>
   <br>
 
 
-  <label for="password">Mot de passe</label><input id="password" name="password" type="password" formControlName="password">
-  <div class="error" *ngIf="loginForm.get('password')?.hasError('required')">
+  <label for="password">Mot de passe</label>
+  <input id="password" name="password" type="password" formControlName="password">
+  <div class="red" *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
     Ce champ est obligatoire !
+  </div>
+  <div class="red" *ngIf="loginForm.get('password')?.hasError('minlength' ) && loginForm.get('password')?.touched">
+    Le login doit faire au moin 4 carractères
   </div>
   <br>
 
+  <button [disabled]="loginForm.invalid">Se connecter</button>
 
-  <button>Se connecter</button>
 
 </form>
