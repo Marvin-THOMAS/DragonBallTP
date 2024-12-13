@@ -7,11 +7,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CharacterService {
 
-  private BASE_URL: string = 'https://www.dragonball-api.com/api';
+  private BASE_URL: string = 'https://dragonball-api.com/api';
 
   constructor(private http: HttpClient) {}
 
   getCharacter(){
-    return this.http.get<Character>(`${this.BASE_URL}/charcters/1`)
+    return this.http.get<Character>(`${this.BASE_URL}/characters/1`)
   }
 }

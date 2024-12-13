@@ -9,7 +9,7 @@ import {CharacterService} from "../../services/character/character.service";
   selector: 'app-home',
   standalone: true,
   imports: [
-    HeaderComponent, HttpClientModule,
+    HeaderComponent, HttpClientModule
   ],
   providers: [CharacterService],
   templateUrl: './home.component.html',

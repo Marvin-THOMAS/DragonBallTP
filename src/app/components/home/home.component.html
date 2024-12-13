@@ -1,5 +1,11 @@
 <app-header></app-header>
 <br><br>
 <div>
-  {{character}}
+  {{character?.id}}
+  {{character?.name}}
+  {{character?.race}}
+  {{character?.description}}
+  <img src="{{character?.image}}" alt="characterImage">
+
+
 </div>
